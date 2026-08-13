@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -12,23 +13,27 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
+        $user = User::first();
+
+        $categories = [
             [
-                "name" => "Personal",
-                "color" => "#329864",
+                'name' => 'Work',
+                'color' => '#3B82F6',
             ],
             [
-                "name" => "Work",
-                "color" => "#f5a623",
+                'name' => 'Personal',
+                'color' => '#EF4444',
             ],
             [
-                "name" => "Shopping",
-                "color" => "#50e3c2",
+                'name' => 'Shopping',
+                'color' => '#10B981',
             ],
-            [
-                "name" => "Fitness",
-                "color" => "#4a90e2",
-            ],
-        ]);
+        ];
+
+        foreach ($categories as $category) {
+            Category::create([...$category,
+                'user_id' => $user->id,
+            ]);
+        }
     }
 }
