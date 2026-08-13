@@ -52,4 +52,9 @@ class User extends Authenticatable implements PasskeyUser
     {
         return $this->hasMany(Category::class);
     }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
 }
