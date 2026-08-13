@@ -49,11 +49,17 @@ class User extends Authenticatable implements PasskeyUser
         ];
     }
 
+    /**
+     * @return HasMany<Category, $this>
+     */
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
     }
 
+    /**
+     * @return HasMany<Task, $this>
+     */
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
