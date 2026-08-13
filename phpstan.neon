@@ -11,5 +11,3 @@ parameters:
         - routes/
 
     level: 7
-    scanFiles:
-        - _ide_helper_models.php
